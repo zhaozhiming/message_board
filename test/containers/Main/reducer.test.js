@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import main from 'containers/Main/reducer';
 import * as at from 'constants/actionTypes';
-import immutable from 'immutable';
 
 describe('main reducer', () => {
   it('should add message correctly', () => {

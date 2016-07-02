@@ -69,6 +69,7 @@ class MessageForm extends Component {
         className={classnames(...className.split(), style.form)}
         horizontal form={this.props.form}
       >
+        <h1 className={style.header}>我要发表看法</h1>
         <Form.Item label="您的留言" hasFeedback {...labelWrapper} >
           <Input
             type="textarea" rows={6}

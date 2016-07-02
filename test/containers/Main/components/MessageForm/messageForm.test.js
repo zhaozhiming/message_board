@@ -2,18 +2,7 @@ import React from 'react';
 import { Button, Input, Form } from 'antd';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import sinon from 'sinon';
 import MessageForm from 'containers/Main/components/MessageForm';
-
-const props = {
-  message: 'foo',
-};
-
-const context = {
-  mainActions: {
-    addMessage: sinon.spy(),
-  }
-};
 
 describe('MessageForm component', () => {
   it('should render correctly', () => {

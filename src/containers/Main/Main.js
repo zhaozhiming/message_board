@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import * as MainActions from 'containers/Main/actions';
 import Header from './components/Header';
 import MessageForm from './components/MessageForm';
+import MessageList from './components/MessageList';
 
 
 function mapStateToProps(state) {
@@ -41,6 +42,7 @@ class Main extends Component {
       <div className={style.content}>
         <Header />
         <div className={style.main} >
+          <MessageList />
           <MessageForm />
         </div>
       </div>

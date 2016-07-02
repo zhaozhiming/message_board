@@ -21,7 +21,7 @@ class Header extends Component {
         style={this.props.style}
         className={classnames(...className.split(), style.header)}
       >
-        <span className={style.title}>Message Board</span>
+        <span className={style.title}>留言板</span>
       </div>
     );
   }
