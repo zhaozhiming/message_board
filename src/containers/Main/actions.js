@@ -1,15 +1,9 @@
 import * as at from 'constants/actionTypes';
 
-export function changeName(name) {
+export function addMessage(message, email) {
   return {
-    type: at.CHANGE_NAME,
-    name,
-  };
-}
-
-export function changeMessage(message) {
-  return {
-    type: at.CHANGE_MESSAGE,
+    type: at.ADD_MESSAGE,
     message,
+    email,
   };
 }

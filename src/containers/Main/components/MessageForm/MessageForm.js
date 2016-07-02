@@ -30,7 +30,8 @@ class MessageForm extends Component {
     this.props.form.validateFields((errors, values) => {
       if (!!errors) return;
 
-      this.mainActions.addMessage(values);
+      const { message, email } = values;
+      this.context.mainActions.addMessage(message, email);
     });
   }
 

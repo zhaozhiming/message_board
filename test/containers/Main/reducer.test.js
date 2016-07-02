@@ -4,11 +4,17 @@ import * as at from 'constants/actionTypes';
 import immutable from 'immutable';
 
 describe('main reducer', () => {
-  it('should change name correctly', () => {
-    const result = main(immutable.fromJS({}), {
-      type: at.CHANGE_NAME,
-      name: 'bar',
+  it('should add message correctly', () => {
+    const result = main(undefined, {
+      type: at.ADD_MESSAGE,
+      message: 'foo',
+      email: 'bar@abc.com',
     });
-    expect(result.get('name')).to.be.equal('bar');
+    expect(result.size).to.be.equal(1);
+    expect(result.toJS()).to.deep.equal([{
+      message: 'foo',
+      email: 'bar@abc.com',
+      replies: [],
+    }]);
   });
 });

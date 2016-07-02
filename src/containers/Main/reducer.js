@@ -1,17 +1,16 @@
 import * as at from 'constants/actionTypes';
-import immutable from 'immutable';
+import immutable, { List } from 'immutable';
 
-const INITIAL_STATE = immutable.fromJS({
-  name: 'main',
-  message: 'hello world',
-});
+const INITIAL_STATE = new List;
 
 export default function main(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case at.CHANGE_NAME:
-      return state.update('name', () => action.name);
-    case at.CHANGE_MESSAGE:
-      return state.update('message', () => action.message);
+    case at.ADD_MESSAGE:
+      return state.push(immutable.fromJS({
+        message: action.message,
+        email: action.email,
+        replies: [],
+      }));
     default:
       return state;
   }
