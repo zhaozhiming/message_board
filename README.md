@@ -9,3 +9,4 @@
 - [] use github io tu publish app
 - [] clear form when submit
 - [] add message count
+- [] message add date
