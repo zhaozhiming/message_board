@@ -10,10 +10,7 @@ describe('main reducer', () => {
       email: 'bar@abc.com',
     });
     expect(result.size).to.be.equal(1);
-    expect(result.toJS()).to.deep.equal([{
-      message: 'foo',
-      email: 'bar@abc.com',
-      replies: [],
-    }]);
+    expect(result.toJS()[0].message).to.be.equal('foo');
+    expect(result.toJS()[0].email).to.be.equal('bar@abc.com');
   });
 });

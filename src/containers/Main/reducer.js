@@ -9,6 +9,7 @@ export default function main(state = INITIAL_STATE, action) {
       return state.push(immutable.fromJS({
         message: action.message,
         email: action.email,
+        createAt: new Date().getTime(),
         replies: [],
       }));
     default:

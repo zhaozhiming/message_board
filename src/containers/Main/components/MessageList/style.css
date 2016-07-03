@@ -26,3 +26,9 @@
   font-size: 15px;
   white-space: pre-wrap;
 }
+
+.list .element .createAt {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+}

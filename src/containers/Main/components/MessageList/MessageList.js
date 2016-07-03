@@ -2,6 +2,7 @@ import style from './style.css';
 
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
+import moment from 'moment';
 
 
 class MessageList extends Component {
@@ -20,6 +21,10 @@ class MessageList extends Component {
 
   state = {};
 
+  formatDate(time) {
+    return moment(time).format('YYYY-MM-DD HH:mm:ss');
+  }
+
   renderMessageList() {
     const messages = this.context.main.toJS();
     return messages.map((msg, i) => (
@@ -29,6 +34,7 @@ class MessageList extends Component {
           &nbsp;说:
         </h2>
         <span className={style.message}>{msg.message}</span>
+        <span className={style.createAt}>{this.formatDate(msg.createAt)}</span>
       </div>
     ));
   }
