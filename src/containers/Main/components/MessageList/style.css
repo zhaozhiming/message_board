@@ -25,10 +25,16 @@
   margin: 10px;
   font-size: 15px;
   white-space: pre-wrap;
+  text-align: left;
 }
 
 .list .element .createAt {
   display: flex;
   justify-content: flex-end;
   margin-right: 50px;
+}
+
+.list .element .createAt .reply-link {
+  color: #666;
+  text-decoration: underline;
 }

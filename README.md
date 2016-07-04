@@ -11,3 +11,4 @@
 - [] add message count
 - [x] message add date
 - [] make message list element height auto fix conten
+- [] sort message by creat time
