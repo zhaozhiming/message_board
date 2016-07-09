@@ -5,7 +5,7 @@ import randomId from 'utils/randomId';
 const INITIAL_STATE = new List;
 
 function findMsgIndex(state, msgId) {
-  return state.findIndex(m => m.id === msgId);
+  return state.findIndex(m => m.get('id') === msgId);
 }
 
 export default function main(state = INITIAL_STATE, action) {

@@ -20,11 +20,6 @@ class MessageList extends Component {
     mainActions: PropTypes.object,
   };
 
-  constructor(props, context) {
-    super(props, context);
-    this.handleReplyClick = this.handleReplyClick.bind(this);
-  }
-
   formatDate(time) {
     return moment(time).format('YYYY-MM-DD HH:mm:ss');
   }
@@ -44,7 +39,7 @@ class MessageList extends Component {
         <span className={style.message}>{msg.message}</span>
         <span className={style.createAt}>
           {this.formatDate(msg.createAt)}&nbsp;|&nbsp;
-          <a className={style['reply-link']} onClick={this.handleReplyClick}>回复</a>
+          <a className={style['reply-link']} onClick={() => this.handleReplyClick(msg.id)}>回复</a>
         </span>
         <div style={{ display: msg.showReply ? 'block' : 'none' }} className={style['reply-form']}>
           <span>show me</span>
