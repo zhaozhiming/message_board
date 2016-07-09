@@ -4,6 +4,10 @@ import randomId from 'utils/randomId';
 
 const INITIAL_STATE = new List;
 
+function findMsgIndex(state, msgId) {
+  return state.findIndex(m => m.id === msgId);
+}
+
 export default function main(state = INITIAL_STATE, action) {
   switch (action.type) {
     case at.ADD_MESSAGE:
@@ -13,7 +17,13 @@ export default function main(state = INITIAL_STATE, action) {
         email: action.email,
         createAt: new Date().getTime(),
         replies: [],
+        showReply: false,
       }));
+    case at.TOGGLE_REPLY_FORM:
+      return state.updateIn([
+        findMsgIndex(state, action.msgId),
+        'showReply',
+      ], v => !v);
     default:
       return state;
   }

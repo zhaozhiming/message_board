@@ -7,3 +7,10 @@ export function addMessage(message, email) {
     email,
   };
 }
+
+export function toggleReplyForm(msgId) {
+  return {
+    type: at.TOGGLE_REPLY_FORM,
+    msgId,
+  };
+}
