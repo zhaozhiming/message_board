@@ -3,6 +3,7 @@ import style from './style.css';
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
+import ReplyForm from '../ReplyForm';
 
 
 class MessageList extends Component {
@@ -31,7 +32,10 @@ class MessageList extends Component {
   renderMessageList() {
     const messages = this.context.main.toJS();
     return messages.map((msg, i) => (
-      <div className={style.element} key={i}>
+      <div
+        key={i}
+        className={classnames(style.element, msg.showReply ? style['element-reply'] : '')}
+      >
         <h2 className={style.title}>
           <span className={style.email}>{msg.email}</span>
           &nbsp;说:
@@ -41,8 +45,8 @@ class MessageList extends Component {
           {this.formatDate(msg.createAt)}&nbsp;|&nbsp;
           <a className={style['reply-link']} onClick={() => this.handleReplyClick(msg.id)}>回复</a>
         </span>
-        <div style={{ display: msg.showReply ? 'block' : 'none' }} className={style['reply-form']}>
-          <span>show me</span>
+        <div className={msg.showReply ? style['reply-form-show'] : style['reply-form-hidden']}>
+          <ReplyForm msgId={msg.id} />
         </div>
       </div>
     ));

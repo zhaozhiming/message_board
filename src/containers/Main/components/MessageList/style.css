@@ -12,6 +12,10 @@
   margin-top: 10px;
 }
 
+.list .element-reply {
+  height: 250px;
+}
+
 .list .element .title {
   display: flex;
 }
@@ -37,4 +41,12 @@
 .list .element .createAt .reply-link {
   color: #666;
   text-decoration: underline;
+}
+
+.list .element .reply-form-hidden {
+  display: none;
+}
+
+.list .element .reply-form-show {
+  display: block;
 }

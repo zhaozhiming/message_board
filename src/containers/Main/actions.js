@@ -14,3 +14,12 @@ export function toggleReplyForm(msgId) {
     msgId,
   };
 }
+
+export function addReply(msgId, message, email) {
+  return {
+    type: at.ADD_REPLY,
+    msgId,
+    message,
+    email,
+  };
+}

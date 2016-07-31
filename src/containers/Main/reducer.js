@@ -24,6 +24,15 @@ export default function main(state = INITIAL_STATE, action) {
         findMsgIndex(state, action.msgId),
         'showReply',
       ], v => !v);
+    case at.ADD_REPLY:
+      return state.updateIn([
+        findMsgIndex(state, action.msgId),
+        'replies',
+      ], (replies) => replies.push(immutable.fromJS({
+        message: action.message,
+        email: action.email,
+        createAt: new Date().getTime(),
+      })));
     default:
       return state;
   }
