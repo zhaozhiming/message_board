@@ -1,0 +1,20 @@
+.reply-list {
+  margin-left: 20px;
+}
+
+.reply-list .reply {
+}
+
+.reply-list .reply .email {
+  text-align: left;
+}
+
+.reply-list .reply .message {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.reply-list .reply .create-at {
+  text-align: right;
+  margin-right: 50px;
+}

@@ -1,14 +1,14 @@
 import { expect } from 'chai';
 import main from 'containers/Main/reducer';
 import * as at from 'constants/actionTypes';
-import immutable, { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 
-const INITIAL_STATE = new List([immutable.fromJS({
+const INITIAL_STATE = new List([new Map({
   id: '1',
   message: 'foo',
   email: 'foo@bar.com',
-  replies: [],
+  replies: new List,
   showReply: false,
 })]);
 

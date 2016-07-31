@@ -7,13 +7,9 @@
 .list .element {
   display: flex;
   flex-direction: column;
-  height: 100px;
   border-bottom: 1px dashed black;
   margin-top: 10px;
-}
-
-.list .element-reply {
-  height: 250px;
+  overflow: auto;
 }
 
 .list .element .title {

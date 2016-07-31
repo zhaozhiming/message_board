@@ -90,7 +90,7 @@ class ReplyForm extends Component {
         </Form.Item>
         <Form.Item label={emailLabel} hasFeedback {...labelWrapper} >
           <Input.Group>
-            <Col span="18">
+            <Col span="22">
               <Input type="email" {...emailProps} placeholder="请输入邮箱..." />
             </Col>
             <Col span="1">

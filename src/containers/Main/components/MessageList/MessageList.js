@@ -2,8 +2,9 @@ import style from './style.css';
 
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import moment from 'moment';
+import { formatDate } from 'utils/dateUtils';
 import ReplyForm from '../ReplyForm';
+import ReplyList from '../ReplyList';
 
 
 class MessageList extends Component {
@@ -21,10 +22,6 @@ class MessageList extends Component {
     mainActions: PropTypes.object,
   };
 
-  formatDate(time) {
-    return moment(time).format('YYYY-MM-DD HH:mm:ss');
-  }
-
   handleReplyClick(msgId) {
     this.context.mainActions.toggleReplyForm(msgId);
   }
@@ -34,7 +31,7 @@ class MessageList extends Component {
     return messages.map((msg, i) => (
       <div
         key={i}
-        className={classnames(style.element, msg.showReply ? style['element-reply'] : '')}
+        className={style.element}
       >
         <h2 className={style.title}>
           <span className={style.email}>{msg.email}</span>
@@ -42,12 +39,13 @@ class MessageList extends Component {
         </h2>
         <span className={style.message}>{msg.message}</span>
         <span className={style.createAt}>
-          {this.formatDate(msg.createAt)}&nbsp;|&nbsp;
+          {formatDate(msg.createAt)}&nbsp;|&nbsp;
           <a className={style['reply-link']} onClick={() => this.handleReplyClick(msg.id)}>回复</a>
         </span>
         <div className={msg.showReply ? style['reply-form-show'] : style['reply-form-hidden']}>
           <ReplyForm msgId={msg.id} />
         </div>
+        <ReplyList replies={msg.replies} />
       </div>
     ));
   }
