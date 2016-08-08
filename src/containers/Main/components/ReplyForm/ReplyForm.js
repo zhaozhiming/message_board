@@ -2,7 +2,7 @@ import style from './style.css';
 
 import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
-import { Form, Input, Button, Col } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 
 class ReplyForm extends Component {
@@ -10,7 +10,6 @@ class ReplyForm extends Component {
     style: PropTypes.string,
     className: PropTypes.string,
     form: PropTypes.object,
-    showText: PropTypes.bool,
     msgId: PropTypes.string,
   };
 
@@ -35,14 +34,6 @@ class ReplyForm extends Component {
       const { message, email } = values;
       this.context.mainActions.addReply(this.props.msgId, message, email);
     });
-  }
-
-  renderTitle() {
-    if (!this.props.showText) return false;
-
-    return (
-      <h1 className={style.header}>我要发表看法</h1>
-    );
   }
 
   render() {
@@ -72,31 +63,25 @@ class ReplyForm extends Component {
       wrapperCol: { span: 20 },
     };
 
-    const messageLabel = this.props.showText ? '您的留言' : '';
-    const emailLabel = this.props.showText ? '您的邮箱' : '';
-
     return (
       <Form
         style={this.props.style}
         className={classnames(...className.split(), style.form)}
         horizontal form={this.props.form}
       >
-        {this.renderTitle()}
-        <Form.Item label={messageLabel} hasFeedback {...labelWrapper} >
+        <Form.Item hasFeedback {...labelWrapper} >
           <Input
             type="textarea" rows={5}
             placeholder="请输入留言信息..." {...messageProps}
           />
         </Form.Item>
-        <Form.Item label={emailLabel} hasFeedback {...labelWrapper} >
-          <Input.Group>
-            <Col span="22">
-              <Input type="email" {...emailProps} placeholder="请输入邮箱..." />
-            </Col>
-            <Col span="1">
-              <Button type="primary" onClick={this.handleSubmit} >提交</Button>
-            </Col>
-          </Input.Group>
+        <Form.Item {...labelWrapper} >
+          <Input
+            className={style.email}
+            type="email" {...emailProps}
+            placeholder="请输入邮箱..."
+          />
+          <Button type="primary" onClick={this.handleSubmit} >提交</Button>
         </Form.Item>
       </Form>
     );
