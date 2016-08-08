@@ -32,6 +32,7 @@ class MessageForm extends Component {
 
       const { message, email } = values;
       this.context.mainActions.addMessage(message, email);
+      this.props.form.resetFields();
     });
   }
 
