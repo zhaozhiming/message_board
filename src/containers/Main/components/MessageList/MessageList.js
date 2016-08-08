@@ -43,7 +43,7 @@ class MessageList extends Component {
           <a className={style['reply-link']} onClick={() => this.handleReplyClick(msg.id)}>回复</a>
         </span>
         <div className={msg.showReply ? style['reply-form-show'] : style['reply-form-hidden']}>
-          <ReplyForm msgId={msg.id} />
+          <ReplyForm msgId={msg.id} onClose={() => this.handleReplyClick(msg.id)} />
         </div>
         <ReplyList replies={msg.replies} />
       </div>
