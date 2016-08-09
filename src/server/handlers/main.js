@@ -2,7 +2,6 @@ export default {
   method: ['GET'],
   path: '/',
   config: {
-    auth: false,
     handler(request, reply) {
       const host = process.env.HOSTNAME || 'localhost';
       const webserver = process.env.NODE_ENV === 'production' ? '' : `//${host}:8080`;

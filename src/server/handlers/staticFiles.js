@@ -2,7 +2,6 @@ export default {
   method: 'GET',
   path: '/assets/{filename*}',
   config: {
-    auth: false,
     handler: {
       file: (request) => {
         let assetsPath = `dist${request.path}`;

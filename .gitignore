@@ -37,3 +37,6 @@ dist
 
 # 其他
 dump.rdb
+
+# DB
+db

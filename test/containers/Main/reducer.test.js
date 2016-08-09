@@ -14,10 +14,13 @@ const INITIAL_STATE = new List([new Map({
 
 describe('main reducer', () => {
   it('should add message correctly', () => {
-    const result = main(INITIAL_STATE, {
-      type: at.ADD_MESSAGE,
+    const message = {
       message: 'foo',
       email: 'bar@abc.com',
+    };
+    const result = main(INITIAL_STATE, {
+      type: at.ADD_MESSAGE,
+      message,
     });
     expect(result.size).to.be.equal(2);
     expect(result.toJS()[1].message).to.be.equal('foo');
