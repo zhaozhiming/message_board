@@ -4,16 +4,16 @@ const db = new PouchDB('./db');
 
 export default [
   {
-    method: ['PUT'],
-    path: '/api/message/add',
+    method: ['PUT', 'POST'],
+    path: '/api/message/save',
     config: {
       handler(request, reply) {
         const message = JSON.parse(request.payload);
         db.put(message, (err) => {
           if (!err) {
-            return reply('Success add message');
+            return reply('save message success');
           }
-          return reply(`add message error: ${err}`);
+          return reply(`save message error: ${err}`);
         });
       },
     },
@@ -32,6 +32,17 @@ export default [
           }
           return reply(`fetch all messages error: ${err}`);
         });
+      },
+    },
+  },
+  {
+    method: ['GET'],
+    path: '/api/message/{id}',
+    config: {
+      handler(request, reply) {
+        db.get(request.params.id)
+        .then(message => reply(message))
+        .catch(err => reply(`find message error: ${err}`));
       },
     },
   },

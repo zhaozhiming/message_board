@@ -17,14 +17,8 @@ export default function main(state = INITIAL_STATE, action) {
         'showReply',
       ], v => !v);
     case at.ADD_REPLY:
-      return state.updateIn([
-        findMsgIndex(state, action.msgId),
-        'replies',
-      ], (replies) => replies.push(immutable.fromJS({
-        message: action.message,
-        email: action.email,
-        createAt: new Date().getTime(),
-      })));
+      return state.update(findMsgIndex(state, action.msgId),
+        () => immutable.fromJS(action.message));
     case at.ALL_MESSAGE:
       return state.concat(immutable.fromJS(action.messages));
     default:

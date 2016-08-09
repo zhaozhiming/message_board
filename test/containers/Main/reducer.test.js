@@ -36,14 +36,25 @@ describe('main reducer', () => {
   });
 
   it('should add reply correctly', () => {
+    const message = {
+      _id: '1',
+      message: 'foo',
+      email: 'foo@bar.com',
+      replies: [
+        {
+          message: 'reply',
+          email: 'bar@foo.com',
+        },
+      ],
+      showReply: false,
+    };
     const result = main(INITIAL_STATE, {
       type: at.ADD_REPLY,
       msgId: '1',
-      message: 'foo',
-      email: 'bar@abc.com',
+      message,
     });
-    expect(result.toJS()[0].replies[0].message).to.be.equal('foo');
-    expect(result.toJS()[0].replies[0].email).to.be.equal('bar@abc.com');
+    expect(result.toJS()[0].replies[0].message).to.be.equal('reply');
+    expect(result.toJS()[0].replies[0].email).to.be.equal('bar@foo.com');
   });
 
   it('should fetch all messages correctly', () => {

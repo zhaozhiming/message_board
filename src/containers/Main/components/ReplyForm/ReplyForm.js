@@ -11,7 +11,6 @@ class ReplyForm extends Component {
     className: PropTypes.string,
     form: PropTypes.object,
     msgId: PropTypes.string,
-    onClose: PropTypes.func,
   };
 
   static contextTypes = {
@@ -35,7 +34,6 @@ class ReplyForm extends Component {
       const { message, email } = values;
       this.context.mainActions.addReply(this.props.msgId, message, email);
       this.props.form.resetFields();
-      this.props.onClose();
     });
   }
 

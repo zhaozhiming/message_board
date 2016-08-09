@@ -9,15 +9,14 @@ export function addMessage(message, email) {
       email,
       createAt: time,
       replies: [],
-      showReply: false,
     };
-    fetch('/api/message/add', {
+    fetch('/api/message/save', {
       method: 'PUT',
       body: JSON.stringify(messageInfo),
     })
     .then(() => dispatch({
       type: at.ADD_MESSAGE,
-      message: messageInfo,
+      message: Object.assign({}, messageInfo, { showReply: false }),
     }));
   };
 }
@@ -29,12 +28,25 @@ export function toggleReplyForm(msgId) {
   };
 }
 
-export function addReply(msgId, message, email) {
-  return {
-    type: at.ADD_REPLY,
-    msgId,
-    message,
-    email,
+export function addReply(msgId, reply, email) {
+  return async (dispatch) => {
+    const response = await fetch(`/api/message/${msgId}`);
+    const message = await response.json();
+    message.replies.push({
+      message: reply,
+      email,
+      createAt: new Date().getTime(),
+    });
+
+    fetch('/api/message/save', {
+      method: 'POST',
+      body: JSON.stringify(message),
+    })
+    .then(() => dispatch({
+      type: at.ADD_REPLY,
+      msgId,
+      message: Object.assign({}, message, { showReply: false }),
+    }));
   };
 }
 
