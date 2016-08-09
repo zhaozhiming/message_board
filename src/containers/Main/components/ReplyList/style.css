@@ -5,6 +5,11 @@
 .reply-list .reply {
 }
 
+.reply-list .reply .header {
+  float: left;
+  margin-right: 5px;
+}
+
 .reply-list .reply .email {
   text-align: left;
 }
@@ -12,6 +17,7 @@
 .reply-list .reply .message {
   text-align: left;
   margin-left: 10px;
+  white-space: pre-wrap;
 }
 
 .reply-list .reply .create-at {

@@ -9,6 +9,5 @@
 - [x] message add date
 - [x] make message list element height auto fix conten
 - [x] sort message by creat time
+- [x] fetch header imgage from Gravatar
 - [] add message count
-- [] fetch header imgage from Gravatar
-- [] use github io tu publish app

@@ -16,6 +16,10 @@
   display: flex;
 }
 
+.list .element .title .header {
+  margin-right: 5px;
+}
+
 .list .element .title .email {
   text-decoration: underline;
 }

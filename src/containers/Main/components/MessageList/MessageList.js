@@ -5,6 +5,7 @@ import React, { Component, PropTypes } from 'react';
 import { formatDate } from 'utils/dateUtils';
 import ReplyForm from '../ReplyForm';
 import ReplyList from '../ReplyList';
+import { avatarHash } from 'utils/gravatar';
 
 
 class MessageList extends Component {
@@ -38,6 +39,7 @@ class MessageList extends Component {
         className={style.element}
       >
         <h2 className={style.title}>
+          <img className={style.header} alt="header" src={`https://www.gravatar.com/avatar/${avatarHash(msg.email)}?s=30`} />
           <span className={style.email}>{msg.email}</span>
           &nbsp;说:
         </h2>
@@ -56,7 +58,6 @@ class MessageList extends Component {
 
   render() {
     const { className } = this.props;
-
     return (
       <div
         style={this.props.style}
