@@ -58,12 +58,14 @@ class MessageList extends Component {
 
   render() {
     const { className } = this.props;
+    const messages = this.context.main.toJS();
     return (
       <div
         style={this.props.style}
         className={classnames(...className.split(), style.list)}
       >
-      {this.renderMessageList()}
+        <div className={style.count}>留言（{messages.length}条）</div>
+        {this.renderMessageList()}
       </div>
     );
   }
