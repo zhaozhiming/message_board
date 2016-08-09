@@ -37,3 +37,16 @@ export function addReply(msgId, message, email) {
     email,
   };
 }
+
+export function getAllMessages() {
+  return (dispatch) => {
+    fetch('api/message/all')
+    .then(response => response.json())
+    .then(json => {
+      dispatch({
+        type: at.ALL_MESSAGE,
+        messages: json.map(x => x.doc),
+      });
+    });
+  };
+}

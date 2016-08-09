@@ -5,7 +5,7 @@ import { List, Map } from 'immutable';
 
 
 const INITIAL_STATE = new List([new Map({
-  id: '1',
+  _id: '1',
   message: 'foo',
   email: 'foo@bar.com',
   replies: new List,
@@ -44,5 +44,21 @@ describe('main reducer', () => {
     });
     expect(result.toJS()[0].replies[0].message).to.be.equal('foo');
     expect(result.toJS()[0].replies[0].email).to.be.equal('bar@abc.com');
+  });
+
+  it('should fetch all messages correctly', () => {
+    const messages = [
+      {
+        message: 'bar',
+        email: 'bar@foo.com',
+      },
+    ];
+    const result = main(INITIAL_STATE, {
+      type: at.ALL_MESSAGE,
+      messages,
+    });
+    expect(result.size).to.be.equal(2);
+    expect(result.toJS()[1].message).to.be.equal('bar');
+    expect(result.toJS()[1].email).to.be.equal('bar@foo.com');
   });
 });

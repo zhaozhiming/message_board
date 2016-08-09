@@ -22,6 +22,10 @@ class MessageList extends Component {
     mainActions: PropTypes.object,
   };
 
+  componentDidMount() {
+    this.context.mainActions.getAllMessages();
+  }
+
   handleReplyClick(msgId) {
     this.context.mainActions.toggleReplyForm(msgId);
   }
@@ -40,10 +44,10 @@ class MessageList extends Component {
         <span className={style.message}>{msg.message}</span>
         <span className={style.createAt}>
           {formatDate(msg.createAt)}&nbsp;|&nbsp;
-          <a className={style['reply-link']} onClick={() => this.handleReplyClick(msg.id)}>回复</a>
+          <a className={style['reply-link']} onClick={() => this.handleReplyClick(msg._id)}>回复</a>
         </span>
         <div className={msg.showReply ? style['reply-form-show'] : style['reply-form-hidden']}>
-          <ReplyForm msgId={msg.id} onClose={() => this.handleReplyClick(msg.id)} />
+          <ReplyForm msgId={msg._id} onClose={() => this.handleReplyClick(msg._id)} />
         </div>
         <ReplyList replies={msg.replies} />
       </div>

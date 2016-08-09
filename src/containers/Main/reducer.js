@@ -4,7 +4,7 @@ import immutable, { List } from 'immutable';
 const INITIAL_STATE = new List;
 
 function findMsgIndex(state, msgId) {
-  return state.findIndex(m => m.get('id') === msgId);
+  return state.findIndex(m => m.get('_id') === msgId);
 }
 
 export default function main(state = INITIAL_STATE, action) {
@@ -25,6 +25,8 @@ export default function main(state = INITIAL_STATE, action) {
         email: action.email,
         createAt: new Date().getTime(),
       })));
+    case at.ALL_MESSAGE:
+      return state.concat(immutable.fromJS(action.messages));
     default:
       return state;
   }

@@ -25,10 +25,9 @@ export default [
       handler(request, reply) {
         db.allDocs({
           include_docs: true,
+          descending: true,
         }, (err, result) => {
           if (!err) {
-            /* eslint no-console: 0 */
-            console.log(`result: ${result.rows}`);
             return reply(result.rows);
           }
           return reply(`fetch all messages error: ${err}`);
